@@ -1,0 +1,28 @@
+# action.yml
+name: 'Copy Directory via SSH Password'
+description: 'scp directory to your host'
+inputs:
+  HOST:
+    description: 'Host IP Address'
+    required: true
+  USERNAME:
+    description: 'Host Username'
+    required: true
+  PASSWORD:
+    description: 'Host Password'
+    required: true
+  SOURCE:
+    description: 'Source Directory'
+    required: true
+  TARGET:
+    description: 'Target Directory'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.HOST }}
+    - ${{ inputs.USERNAME }}
+    - ${{ inputs.PASSWORD }}
+    - ${{ inputs.SOURCE }}
+    - ${{ inputs.TARGET }}
